@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechShop | Modern E-Commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .skeleton {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-transition {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#home" class="text-primary-600 dark:text-primary-500 font-bold text-xl flex items-center">
+                        <i class="fas fa-microchip mr-2"></i>
+                        TechShop
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">Home</a>
+                    <a href="#products" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">Products</a>
+                    <a href="#about" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">About</a>
+                    <a href="#contact" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="searchBtn" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button id="darkModeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                    <div class="md:hidden">
+                        <button id="mobileMenuBtn" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden pb-4 px-4">
+            <a href="#home" class="block py-2 nav-link hover:text-primary-600 dark:hover:text-primary-400">Home</a>
+            <a href="#products" class="block py-2 nav-link hover:text-primary-600 dark:hover:text-primary-400">Products</a>
+            <a href="#about" class="block py-2 nav-link hover:text-primary-600 dark:hover:text-primary-400">About</a>
+            <a href="#contact" class="block py-2 nav-link hover:text-primary-600 dark:hover:text-primary-400">Contact</a>
+        </div>
+        
+        <!-- Search Bar -->
+        <div id="searchBar" class="hidden p-4 bg-gray-100 dark:bg-gray-700">
+            <div class="max-w-7xl mx-auto flex">
+                <input type="text" id="searchInput" placeholder="Search products..." class="w-full px-4 py-2 rounded-l-lg border border-gray-300 dark:bg-gray-600 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                <button id="searchSubmit" class="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-r-lg">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="pageContent" class="page-transition">
+        <!-- Home Page -->
+        <div id="homePage" class="page">
+            <!-- Hero Section -->
+            <section class="bg-white dark:bg-gray-900">
+    <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+        <div class="mr-auto place-self-center lg:col-span-7">
+            <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Payments tool for software companies</h1>
+            <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack.</p>
+            <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+                Get started
+                <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                Speak to Sales
+            </a> 
+        </div>
+        <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+            <img src="https://img.freepik.com/free-vector/shop-with-sign-we-are-open_23-2148562565.jpg?uid=R154657697&ga=GA1.1.418345438.1742900981&semt=ais_items_boosted&w=740" alt="mockup">
+        </div>                
+    </div>
+</section>
+
+            <!-- Featured Products -->
+            
+            <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4">Featured Products</h2>
+        <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Check out our most popular tech gadgets loved by thousands of customers worldwide.
+        </p>
+      </div>
+
+      <!-- Product Grid -->
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+      <div class="text-center mt-12">
+        <a href="Product.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+          View All Products
+        </a>
+      </div>
+    </div>
+  </section>
+            
+            <!-- CTA Section -->
+            <section class="py-20 bg-gray-100 dark:bg-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl font-bold mb-6">Ready to Transform Your Tech Experience?</h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-3xl mx-auto">Join thousands of satisfied customers who have upgraded their tech with our premium products.</p>
+                    <a href="#products" class="bg-primary-500 hover:bg-primary-600 text-white font-bold py-4 px-12 rounded-lg text-lg transition duration-300 inline-block">
+                        Shop Now <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Products Page -->
+        <div id="productsPage" class="page hidden py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold mb-4">Our Products</h1>
+                    <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Discover our wide range of cutting-edge technology products designed to enhance your daily life.</p>
+                </div>
+                
+                <!-- Search and Filter -->
+                <div class="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-grow">
+                            <input type="text" id="productSearch" placeholder="Search products..." class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        </div>
+                        <div class="flex gap-4">
+                            <select id="categoryFilter" class="px-4 py-3 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                <option value="">All Categories</option>
+                                <option value="smartphones">Smartphones</option>
+                                <option value="laptops">Laptops</option>
+                                <option value="fragrances">Fragrances</option>
+                                <option value="skincare">Skincare</option>
+                                <option value="groceries">Groceries</option>
+                                <option value="home-decoration">Home Decoration</option>
+                            </select>
+                            <select id="sortBy" class="px-4 py-3 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                <option value="default">Sort By</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="rating">Top Rated</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+               
+                
+                <!-- Error Message -->
+                <div id="errorMessage" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-8" role="alert">
+                    <strong class="font-bold">Error! </strong>
+                    <span class="block sm:inline">Failed to load products. Please try again later.</span>
+                    <button id="retryButton" class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-6">TechShop</h3>
+                    <p class="text-gray-400 mb-6">Bringing you the latest and greatest in technology since 2023.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white">Products</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Categories</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Smartphones</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Laptops</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Wearables</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Audio</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accessories</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to get special offers and updates.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800">
+                        <button class="bg-primary-500 hover:bg-primary-600 px-4 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">© 2023 TechShop. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="./index.js" ></script>
+   
+</body>
+</html>
