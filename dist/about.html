@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ShopSphere</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#02d67d',
+                            800: '#02d67d',
+                            dark: '#01b86a'
+                        },
+                        secondary: {
+                            DEFAULT: '#f9efcd',
+                            dark: '#f5e8b8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        .team-card:hover .team-overlay {
+            opacity: 1;
+        }
+        .team-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#home" class="text-primary-800 font-bold text-xl flex items-center">
+                        <i class="fas fa-shopping-bag mr-2"></i>ShopSphere
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="./index.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition">Home</a>
+                    <a href="./Product.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition">Products</a>
+                    <a href="./about.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition">About</a>
+                </div>
+                
+                <div class="flex items-center">
+                    <button id="darkModeToggle" class="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                    
+                    <div class="ml-4 relative">
+                        <button id="searchToggle" class="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div id="searchContainer" class="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 shadow-lg rounded-md p-2 hidden">
+                            <input type="text" id="searchInput" placeholder="Search products..." class="w-full px-3 py-2 rounded border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                        </div>
+                    </div>
+                    
+                    <button class="ml-4 p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
+                    
+                    <button id="mobileMenuToggle" class="md:hidden ml-4 p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+            <div class="px-4 py-2 space-y-1">
+                <a href="./index.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary transition">Home</a>
+                <a href="./Product.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary transition">Products</a>
+                <a href="./about.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary transition">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-20 px-4 md:px-6 lg:px-8 bg-gradient-to-br from-secondary to-secondary-dark dark:from-gray-800 dark:to-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 fade-in">
+                    <div class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 rounded-full shadow-md">
+                        <i class="fas fa-calendar-alt text-primary mr-2"></i>
+                        <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Serving customers since 2018</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
+                        Your trusted online shopping destination
+                    </h1>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                        We're more than just an online store. We're a team of passionate retailers dedicated to bringing you the
+                        best products, exceptional service, and an unforgettable shopping experience.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300 flex items-center justify-center">
+                            <i class="fas fa-shopping-cart mr-2"></i>
+                            Start Shopping
+                        </button>
+                        <button class="border-2 border-primary text-primary hover:bg-primary hover:text-white dark:text-primary dark:border-primary px-8 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Contact Support
+                        </button>
+                    </div>
+                </div>
+                <div class="relative fade-in">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600&q=80" 
+                         alt="Happy customers shopping online" 
+                         class="rounded-2xl shadow-2xl w-full h-auto">
+                    <div class="absolute -bottom-6 -left-6 bg-primary text-white p-6 rounded-xl shadow-lg">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-star text-2xl"></i>
+                            <div>
+                                <div class="font-bold text-lg">4.9/5 Rating</div>
+                                <div class="text-sm opacity-90">From 50K+ reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 px-4 md:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center fade-in">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2 counter" data-target="2000000">0</div>
+                    <div class="text-gray-600 dark:text-gray-300 font-medium">Happy Customers</div>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2 counter" data-target="50000">0</div>
+                    <div class="text-gray-600 dark:text-gray-300 font-medium">Products Sold</div>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2 counter" data-target="99.8">0</div>
+                    <div class="text-gray-600 dark:text-gray-300 font-medium">Customer Satisfaction</div>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">24/7</div>
+                    <div class="text-gray-600 dark:text-gray-300 font-medium">Customer Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-20 px-4 md:px-6 lg:px-8 bg-white dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Our Story</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                    From a small online boutique to a trusted e-commerce destination serving millions of customers worldwide.
+                </p>
+            </div>
+
+            <div class="space-y-8 text-lg leading-relaxed text-gray-600 dark:text-gray-300 fade-in">
+                <p>
+                    It all started in 2018 when our founder, Alexandra Martinez, noticed a gap in the online retail market.
+                    Customers wanted quality products, exceptional service, and a shopping experience that felt personal and
+                    trustworthy. What began as a small online boutique has grown into a thriving e-commerce platform.
+                </p>
+                <p>
+                    We've built our reputation on three core principles: carefully curated products, lightning-fast shipping,
+                    and customer service that goes above and beyond. Every item in our store is hand-picked by our team,
+                    ensuring that our customers receive only the best quality products.
+                </p>
+                <p>
+                    Today, we're proud to serve over 2 million customers worldwide, with a 99.8% satisfaction rate and
+                    thousands of five-star reviews. But we're not stopping here – we're constantly innovating and expanding to
+                    bring you even better products and services.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-20 px-4 md:px-6 lg:px-8 bg-secondary dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">What We Stand For</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    These values guide every decision we make and every interaction we have with our customers.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="w-16 h-16 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-2xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Customer Obsessed</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Every decision we make starts with our customers. Their satisfaction and happiness drive everything we do.</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Quality Promise</h3>
+                    <p class="text-gray-600 dark:text-gray-300">We carefully curate every product, ensuring only the highest quality items make it to our store.</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="w-16 h-16 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bolt text-2xl text-yellow-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Fast & Reliable</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Lightning-fast shipping and reliable service you can count on, every single time you shop with us.</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-globe text-2xl text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Sustainable Future</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Committed to eco-friendly practices and supporting brands that care about our planet's future.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 px-4 md:px-6 lg:px-8 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Meet Our Team</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    The dedicated professionals working behind the scenes to make your shopping experience exceptional.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="team-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" 
+                             alt="Alexandra Martinez" 
+                             class="w-full h-64 object-cover">
+                        <div class="team-overlay absolute inset-0 bg-primary bg-opacity-90 flex items-center justify-center">
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-white hover:text-secondary transition-colors">
+                                    <i class="fab fa-linkedin text-2xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-secondary transition-colors">
+                                    <i class="fab fa-twitter text-2xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-secondary transition-colors">
+                                    <i class="fas fa-envelope text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-1">Alexandra Martinez</h3>
+                        <p class="text-primary font-medium mb-3">CEO & Founder</p>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">Retail visionary with 12+ years in e-commerce, passionate about creating exceptional shopping experiences.</p>
+                    </div>
+                </div>
+
+                <div class="team-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" 
+                             alt="James Wilson" 
+                             class="w-full h-64 object-cover">
+                        <div class="team-overlay absolute inset-0 bg-primary bg-opacity-90 flex items-center justify-center">
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-white hover:text-secondary transition-colors">
+                                    <i class="fab fa-linkedin text-2xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-secondary transition-colors">
+                                    <i class="fab fa-twitter text-2xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-secondary transition-colors">
+                                    <i class="fas fa-envelope text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-1">James Wilson</h3>
+                        <p class="text-primary font-medium mb-3">Head of Operations</p>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">Supply chain expert ensuring seamless order fulfillment and inventory management across all channels.</p>
+                    </div>
+                </div>
+
+                <div class="team-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" 
+                             alt="Sofia Chen" 
+                             class="w-full h-64 object-cover">
+                        <div class="team-overlay absolute inset-0 bg-primary bg-opacity-90 flex items-center justify-center">
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-white hover:text-secondary transition-colors">
+                                    <i class="fab fa-linkedin text-2xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-secondary transition-colors">
+                                    <i class="fas fa-envelope text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-1">Sofia Chen</h3>
+                        <p class="text-primary font-medium mb-3">Customer Experience Director</p>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">Customer advocate focused on creating delightful shopping journeys and building lasting relationships.</p>
+                    </div>
+                </div>
+
+                <div class="team-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" 
+                             alt="Marcus Thompson" 
+                             class="w-full h-64 object-cover">
+                        <div class="team-overlay absolute inset-0 bg-primary bg-opacity-90 flex items-center justify-center">
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-white hover:text-secondary transition-colors">
+                                    <i class="fab fa-linkedin text-2xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-secondary transition-colors">
+                                    <i class="fab fa-twitter text-2xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-secondary transition-colors">
+                                    <i class="fas fa-envelope text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-1">Marcus Thompson</h3>
+                        <p class="text-primary font-medium mb-3">Head of Product</p>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">Product curator with an eye for quality and trends, sourcing the best items for our customers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 px-4 md:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Why Choose Us</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300">Here's what makes shopping with us different from the rest.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-truck text-2xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Free Fast Shipping</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Free shipping on orders over $50. Most orders arrive within 2-3 business days.</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-2xl text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Secure Shopping</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Your data is protected with industry-leading security and encryption.</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-2xl text-purple-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">24/7 Support</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Our customer service team is always here to help, day or night.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="py-20 px-4 md:px-6 lg:px-8 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Awards & Recognition</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300">We're honored to be recognized for our commitment to excellence in e-commerce.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="w-16 h-16 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-trophy text-2xl text-yellow-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Best E-commerce Site 2023</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Retail Excellence Awards</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-star text-2xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Customer Choice Award</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Online Shopping Awards</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow duration-300 fade-in">
+                    <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-box text-2xl text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Fastest Shipping 2023</h3>
+                    <p class="text-gray-600 dark:text-gray-300">E-commerce Logistics Awards</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 md:px-6 lg:px-8 bg-primary text-white">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Shopping?</h2>
+            <p class="text-xl opacity-90 mb-8 leading-relaxed">
+                Join millions of satisfied customers and discover why we're the preferred choice for online shopping.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors duration-300 flex items-center justify-center">
+                    <i class="fas fa-shopping-cart mr-2"></i>
+                    Browse Products
+                </button>
+                <button class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center">
+                    <i class="fas fa-envelope mr-2"></i>
+                    Contact Us
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-gray-950 text-white py-12 px-4 md:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                        <i class="fas fa-shopping-bag mr-2"></i>ShopSphere
+                    </h3>
+                    <p class="text-gray-400 mb-4">Your trusted online shopping destination since 2018.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Products</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Track Order</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe for deals and updates</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 rounded-l-lg text-gray-900 dark:text-white dark:bg-gray-700">
+                        <button class="bg-primary hover:bg-primary-dark px-4 py-2 rounded-r-lg transition-colors duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 ShopSphere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.classList.toggle('dark', currentTheme === 'dark');
+
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+
+        // Search functionality
+        const searchToggle = document.getElementById('searchToggle');
+        const searchContainer = document.getElementById('searchContainer');
+        const searchInput = document.getElementById('searchInput');
+
+        searchToggle.addEventListener('click', () => {
+            searchContainer.classList.toggle('hidden');
+            if (!searchContainer.classList.contains('hidden')) {
+                searchInput.focus();
+            }
+        });
+
+        // Close search when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchToggle.contains(e.target) && !searchContainer.contains(e.target)) {
+                searchContainer.classList.add('hidden');
+            }
+        });
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const increment = target / 100;
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                
+                if (target === 99.8) {
+                    element.textContent = current.toFixed(1) + '%';
+                } else if (target >= 1000000) {
+                    element.textContent = (current / 1000000).toFixed(1) + 'M+';
+                } else if (target >= 1000) {
+                    element.textContent = (current / 1000).toFixed(0) + 'K+';
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 20);
+        }
+
+        // Start counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.counter[data-target]');
+                    counters.forEach(counter => {
+                        animateCounter(counter);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.py-16.px-4.md\\:px-6.lg\\:px-8.bg-gray-50');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

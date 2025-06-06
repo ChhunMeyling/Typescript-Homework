@@ -11,17 +11,17 @@ function createProductCard(product: Product): string {
   const imageUrl = product.images?.[0] || product.thumbnail;
 
   return `
-    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden cursor-pointer transition duration-300 ease-in-out hover:shadow-xl">
       <div class="bg-gray-200 dark:bg-gray-600 relative">
         <img src="${imageUrl}" alt="${product.title}" class="w-full object-contain" />
-        <div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold">New</div>
+        <div class="absolute top-4 right-4 bg-[#02d67d] text-white px-3 py-1 rounded-full text-sm font-bold">New</div>
       </div>
       <div class="p-6">
         <h3 class="text-xl font-bold mb-2">${product.title}</h3>
         <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">${product.description}</p>
         <div class="flex justify-between items-center">
           <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">$${product.price}</span>
-          <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">Details</button>
+          <button class="bg-[#02d67d] hover:bg-[#122d40] text-white px-4 py-2 rounded-lg">Details</button>
         </div>
       </div>
     </div>
@@ -59,7 +59,7 @@ function renderSkeletons(count: number = 6) {
   container.innerHTML = skeletonHTML;
 }
 
-// Detect if on "all products" page using URL or element ID
+
 const isAllProductsPage = window.location.pathname.includes("all-products.html") ||
                           document.getElementById("all-products-page") !== null;
 
@@ -76,51 +76,27 @@ fetch("https://dummyjson.com/products")
 
 
 
-//   /// darkmode
-//   const darkModeToggle = document.getElementById("darkModeToggle");
-// const htmlElement = document.documentElement;
 
-// // Load saved theme from localStorage
-// if (localStorage.getItem("theme") === "dark") {
-//   htmlElement.classList.add("dark");
-// } else {
-//   htmlElement.classList.remove("dark");
-// }
-
-// darkModeToggle?.addEventListener("click", () => {
-//   const isDark = htmlElement.classList.toggle("dark");
-//   localStorage.setItem("theme", isDark ? "dark" : "light");
-
-//   // Toggle icon
-//   const moonIcon = darkModeToggle.querySelector(".fa-moon");
-//   const sunIcon = darkModeToggle.querySelector(".fa-sun");
-
-//   if (moonIcon && sunIcon) {
-//     moonIcon.classList.toggle("hidden", isDark);
-//     sunIcon.classList.toggle("hidden", !isDark);
-//   }
-// });
-// Toggle dark mode
 let darkMode = localStorage.getItem('darkMode') === 'true';
 const darkModeToggle = document.getElementById('darkModeToggle') as HTMLButtonElement;
 function initApp() {
-            // Set dark mode based on preference
+           
             if (darkMode) {
                 document.body.classList.add('dark');
             } else {
                 document.body.classList.remove('dark');
             }
 
-            // Set up event listeners
+           
             setupEventListeners();
         }
- // Set up event listeners
+ 
         function setupEventListeners() {
-            // Dark mode toggle
+           
             darkModeToggle.addEventListener('click', toggleDarkMode);
         }
             
-            // Toggle dark mode
+            
         function toggleDarkMode() {
             darkMode = !darkMode;
             localStorage.setItem('darkMode', darkMode.toString());
