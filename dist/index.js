@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 function createProductCard(product) {
     var _a;
     const imageUrl = ((_a = product.images) === null || _a === void 0 ? void 0 : _a[0]) || product.thumbnail;
@@ -60,3 +69,91 @@ fetch("https://dummyjson.com/products")
     renderProducts(data.products, isAllProductsPage ? data.products.length : 6);
 })
     .catch(err => console.error("Failed to load products:", err));
+//   /// darkmode
+//   const darkModeToggle = document.getElementById("darkModeToggle");
+// const htmlElement = document.documentElement;
+// // Load saved theme from localStorage
+// if (localStorage.getItem("theme") === "dark") {
+//   htmlElement.classList.add("dark");
+// } else {
+//   htmlElement.classList.remove("dark");
+// }
+// darkModeToggle?.addEventListener("click", () => {
+//   const isDark = htmlElement.classList.toggle("dark");
+//   localStorage.setItem("theme", isDark ? "dark" : "light");
+//   // Toggle icon
+//   const moonIcon = darkModeToggle.querySelector(".fa-moon");
+//   const sunIcon = darkModeToggle.querySelector(".fa-sun");
+//   if (moonIcon && sunIcon) {
+//     moonIcon.classList.toggle("hidden", isDark);
+//     sunIcon.classList.toggle("hidden", !isDark);
+//   }
+// });
+// Toggle dark mode
+let darkMode = localStorage.getItem('darkMode') === 'true';
+const darkModeToggle = document.getElementById('darkModeToggle');
+function initApp() {
+    // Set dark mode based on preference
+    if (darkMode) {
+        document.body.classList.add('dark');
+    }
+    else {
+        document.body.classList.remove('dark');
+    }
+    // Set up event listeners
+    setupEventListeners();
+}
+// Set up event listeners
+function setupEventListeners() {
+    // Dark mode toggle
+    darkModeToggle.addEventListener('click', toggleDarkMode);
+}
+// Toggle dark mode
+function toggleDarkMode() {
+    darkMode = !darkMode;
+    localStorage.setItem('darkMode', darkMode.toString());
+    if (darkMode) {
+        document.documentElement.classList.add('dark');
+    }
+    else {
+        document.documentElement.classList.remove('dark');
+    }
+}
+document.addEventListener('DOMContentLoaded', () => {
+    initApp();
+});
+function fetchCategories() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const response = yield fetch('https://dummyjson.com/products/category-list');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = yield response.json();
+            renderCategories(data.categories);
+        }
+        catch (error) {
+            console.error('Fetch error:', error);
+            document.getElementById('categories').innerHTML = `
+      <div class="text-red-500 text-center p-4">
+        Failed to load categories. Please try again later.
+      </div>
+    `;
+        }
+    });
+}
+function renderCategories(categories) {
+    const container = document.getElementById('categories');
+    container.innerHTML = `
+    <h2 class="text-2xl font-bold mb-4 text-gray-800">Product Categories</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      ${categories.map(category => `
+        <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-300">
+          <div class="font-medium text-gray-700 capitalize">${category.replace(/-/g, ' ')}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', fetchCategories);
