@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.8",
-    "live": "^0.1.19",
+    "live": "^0.1.22",
     "server": "^1.0.41",
     "tailwindcss": "^4.1.8"
   }
